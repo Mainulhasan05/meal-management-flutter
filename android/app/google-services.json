@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1081830971427",
+    "project_id": "fifth-trainer-405506",
+    "storage_bucket": "fifth-trainer-405506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081830971427:android:cf668df45bc15ebc883996",
+        "android_client_info": {
+          "package_name": "com.example.meal_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1gr93sURlOFhqtq5mPnZ0TYPTNrqeqaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
