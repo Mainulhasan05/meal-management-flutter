@@ -1,12 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:meal_management/app/view/initialPage.dart';
 import 'package:meal_management/app/view/sheetsScreen.dart';
 import 'package:meal_management/sheets/sheets_api.dart';
 
 import 'app/PushNotification.dart';
 import 'app/view/homeScreen.dart';
+import 'app/view/sheetDetails.dart';
 import 'firebase_options.dart';
 
 Future _firebaseBackgroundMessageHandler(RemoteMessage message) async {
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -45,9 +47,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => const HomeScreen(),
-        '/sheets': (BuildContext context) => const SheetsScreen(
-              sheetId: 'abc',
-            ),
+        '/sheets': (BuildContext context) => const SheetsScreen(),
+        '/sheetDetails': (BuildContext context) => const SheetDetails(),
       },
     );
   }

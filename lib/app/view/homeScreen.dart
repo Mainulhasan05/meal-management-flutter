@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:meal_management/app/controllers/CommonController.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,7 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: months.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  CommonController commonController =
+                      Get.put(CommonController());
+                  commonController.sheetId.value = months[index]['sheetId'];
+                  await commonController.getSheetList();
+
                   Navigator.pushNamed(context, '/sheets',
                       arguments: months[index]['sheetId']);
                 },

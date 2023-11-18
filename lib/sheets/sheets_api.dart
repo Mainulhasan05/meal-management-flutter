@@ -52,9 +52,24 @@ class UserSheetsApi {
     return values;
   }
 
-  static Future getListofSheets() async {
-    final spreadsheet = await _gsheets.spreadsheet(_spreadsheedId);
+  static Future getListofSheets(String sheetId) async {
+    final spreadsheet = await _gsheets.spreadsheet(sheetId);
     final sheets = await spreadsheet.sheets;
     return sheets;
+  }
+
+  static Future getSheetValues(String sheetId, String sheetName) async {
+    final spreadsheet = await _gsheets.spreadsheet(sheetId);
+    final sheet = await spreadsheet.worksheetByTitle(sheetName);
+    final values = await sheet?.values.allRows();
+    print('values: $values');
+    return values;
+  }
+
+  static Future insertValues(
+      String sheetId, String sheetName, List<String> values) async {
+    final spreadsheet = await _gsheets.spreadsheet(sheetId);
+    final sheet = await spreadsheet.worksheetByTitle(sheetName);
+    await sheet?.values.appendRow(values);
   }
 }
